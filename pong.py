@@ -1,4 +1,4 @@
-# Requiere pygame instalado: pip install pygame y Python 3.12
+# Requiere pygame instalado: pip install pygame y Python 3.12 Prueba
 import pygame
 
 pygame.init()
