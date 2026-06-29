@@ -3,7 +3,7 @@ import pygame
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600)) #Tamaño de la ventana
-clock = pygame.time.Clock() #Frames por segundo del juegp
+clock = pygame.time.Clock() #Frames por segundo del juego
 font = pygame.font.Font(None, 75) #Tamaño de la fuente para el marcador
 
 ball = pygame.Rect(400, 300, 20, 20) #Tamaño de la pelota
@@ -43,6 +43,15 @@ while running:
     if ball.right >= 800: #Si la pelota sale por la derecha, el jugador 1 anota un punto
         score1 += 1 #Si la pelota sale por la derecha, el jugador 1 anota un punto
         ball.center = (400, 300) #Reinicia la posición de la pelota al centro de la pantalla
+    #victoria
+    if score1 == 5 or score2 == 5:
+        winner_text = "Jugador 1 gana!" if score1 == 5 else "Jugador 2 gana!"
+        text = font.render(winner_text, True, (255,255,255))
+        screen.blit(text, (200, 250))
+        pygame.display.flip()
+        pygame.time.wait(3000)  # Espera 3 segundos mostrando el mensaje
+        running = False
+
 
     # Dibujar
     screen.fill((0, 0, 0)) 
@@ -58,5 +67,6 @@ while running:
 
     pygame.display.flip() #Actualiza la pantalla
     clock.tick(60) #Frames por segundo del juego
+    
 
 pygame.quit()
